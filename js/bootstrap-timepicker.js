@@ -355,7 +355,7 @@
         return '';
       }
 
-      return this.hour + ':' + (this.minute.toString().length === 1 ? '0' + this.minute : this.minute) + (this.showSeconds ? ':' + (this.second.toString().length === 1 ? '0' + this.second : this.second) : '') + (this.showMeridian ? ' ' + this.meridian : '');
+      return (this.hour.toString().length === 1 ? '0' + this.hour : this.hour) + ':' + (this.minute.toString().length === 1 ? '0' + this.minute : this.minute) + (this.showSeconds ? ':' + (this.second.toString().length === 1 ? '0' + this.second : this.second) : '') + (this.showMeridian ? ' ' + this.meridian : '');
     },
 
     hideWidget: function() {
@@ -466,11 +466,7 @@
 
       if ($element.setSelectionRange) {
         setTimeout(function() {
-          if (self.hour < 10) {
-            $element.setSelectionRange(0,1);
-          } else {
-            $element.setSelectionRange(0,2);
-          }
+          $element.setSelectionRange(0,2);
         }, 0);
       }
     },
@@ -483,11 +479,7 @@
 
       if ($element.setSelectionRange) {
         setTimeout(function() {
-          if (self.hour < 10) {
-            $element.setSelectionRange(2,4);
-          } else {
-            $element.setSelectionRange(3,5);
-          }
+          $element.setSelectionRange(3,5);
         }, 0);
       }
     },
@@ -818,7 +810,10 @@
 
         hour = timeArray[0] ? timeArray[0].toString() : timeArray.toString();
 
-        if(this.explicitMode && hour.length > 2 && (hour.length % 2) !== 0 ) {
+        if(hour.length == 3)
+            hour = "0" + hour;
+
+        if(this.explicitMode && hour.length > 2 && (hour.length % 2) !== 0) {
           this.clear();
           return;
         }
@@ -1116,16 +1111,16 @@
   };
 
   //TIMEPICKER PLUGIN DEFINITION
-  $.fn.timepicker = function(option) {
+  $.fn.bootstrapTimepicker = function(option) {
     var args = Array.apply(null, arguments);
     args.shift();
     return this.each(function() {
       var $this = $(this),
-        data = $this.data('timepicker'),
+        data = $this.data('bootstrapTimepicker'),
         options = typeof option === 'object' && option;
 
       if (!data) {
-        $this.data('timepicker', (data = new Timepicker(this, $.extend({}, $.fn.timepicker.defaults, options, $(this).data()))));
+        $this.data('bootstrapTimepicker', (data = new Timepicker(this, $.extend({}, $.fn.bootstrapTimepicker.defaults, options, $(this).data()))));
       }
 
       if (typeof option === 'string') {
@@ -1134,31 +1129,31 @@
     });
   };
 
-  $.fn.timepicker.defaults = {
+  $.fn.bootstrapTimepicker.defaults = {
     defaultTime: 'current',
     disableFocus: false,
     disableMousewheel: false,
     isOpen: false,
-    minuteStep: 15,
+    minuteStep: 1,
     modalBackdrop: false,
     orientation: { x: 'auto', y: 'auto'},
     secondStep: 15,
     snapToStep: false,
     showSeconds: false,
     showInputs: true,
-    showMeridian: true,
+    showMeridian: false,
     template: 'dropdown',
     appendWidgetTo: 'body',
     showWidgetOnAddonClick: true,
     icons: {
-      up: 'glyphicon glyphicon-chevron-up',
-      down: 'glyphicon glyphicon-chevron-down'
+      up: 'fa fa-chevron-up',
+      down: 'fa fa-chevron-down'
     },
     maxHours: 24,
-    explicitMode: false
+    explicitMode: true
   };
 
-  $.fn.timepicker.Constructor = Timepicker;
+  $.fn.bootstrapTimepicker.Constructor = Timepicker;
 
   $(document).on(
     'focus.timepicker.data-api click.timepicker.data-api',
@@ -1170,7 +1165,7 @@
       }
       e.preventDefault();
       // component click requires us to explicitly show it
-      $this.timepicker();
+      $this.bootstrapTimepicker();
     }
   );
 

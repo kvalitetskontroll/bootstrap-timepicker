@@ -10,6 +10,28 @@
  */
 .bootstrap-timepicker {
     position: relative;
+    border-spacing: 0;
+
+    &.input-group {
+        position: relative;
+        display: table;
+        border-collapse: separate;
+
+        .form-control {
+            display: table-cell;
+            position: relative;
+            z-index: 2;
+            float: left;
+            width: 100%;
+            margin-bottom: 0 !important;
+
+            &:first-child {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+
+    }
 
     &.pull-right {
         .bootstrap-timepicker-widget {
@@ -31,14 +53,34 @@
 
     .input-group-addon {
         cursor: pointer;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background-color: #eee;
+        text-align: center;
+        color: #555;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 6px 12px;
+        white-space: nowrap;
+        vertical-align: middle;
+        display: table-cell;
+        border-collapse: separate;
+
         i {
            display: inline-block;
            width: 16px;
            height: 16px;
         }
+
+        &:last-child {
+            border-left: 0;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
     }
 }
 .bootstrap-timepicker-widget {
+    min-width: 90px;
     &.dropdown-menu {
         padding: 4px;
         &.open {
@@ -107,7 +149,7 @@
 
         td {
             text-align: center;
-            height: 30px;
+            height: 17px;
             margin: 0;
             padding: 2px;
 
@@ -123,7 +165,7 @@
                 width: 100%;
                 display: inline-block;
                 margin: 0;
-                padding: 8px 0;
+                padding: 0;
                 outline: 0;
                 color: #333;
 
@@ -145,6 +187,7 @@
                 width: 25px;
                 margin: 0;
                 text-align: center;
+                border: 1px solid lightgray;
             }
         }
     }
