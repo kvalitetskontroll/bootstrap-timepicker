@@ -21,7 +21,7 @@
       "url": "https://github.com/kvalitetskontroll/bootstrap-timepicker.git"
     },
     "dependencies": {
-        "bootstrap": "^3.0",
+        "bootstrap": "https://github.com/kvalitetskontroll/bootstrap.git#^3.0",
         "jquery": "^2.0"
     },
     "devDependencies": {
