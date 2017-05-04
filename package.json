@@ -1,25 +1,25 @@
 {
   "name": "bootstrap-timepicker",
   "description": "Timepicker widget for Twitter Bootstrap",
-  "version": "0.5.2",
+  "version": "0.5.2.1",
   "license": "MIT",
-  "homepage": "http://jdewit.github.com/bootstrap-timepicker",
+  "homepage": "https://github.com/kvalitetskontroll/bootstrap-timepicker",
   "author": {
-    "name": "Joris de Wit",
-    "email": "joris.w.dewit@gmail.com",
-    "url": "http://jorisdewit.ca"
+    "name": "Roy Hansen",
+    "email": "roy@kvalitetskontroll.no",
+    "url": "http://kvalitetskontroll.no"
   },
   "main": "js/bootstrap-timepicker.js",
   "files": ["js", "css"],
   "repository": {
     "type": "git",
-    "url": "git://github.com/jdewit/bootstrap-timepicker"
+    "url": "git://github.com/kvalitetskontroll/bootstrap-timepicker"
   },
   "scripts": {
     "test": "bower install; grunt test;"
   },
   "bugs": {
-    "url": "https://github.com/jdewit/bootstrap-timepicker/issues"
+    "url": "https://github.com/kvalitetskontroll/bootstrap-timepicker/issues"
   },
   "devDependencies": {
     "grunt-cli": "~0.1",
